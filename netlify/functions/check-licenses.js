@@ -1,6 +1,7 @@
-const fetch = require('node-fetch');
+// Usar ES Modules syntax
+import fetch from 'node-fetch';
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const { userID } = event.queryStringParameters;
   
   try {
@@ -23,4 +24,9 @@ exports.handler = async (event) => {
     };
   }
 };
+
+
+
+
+
 
