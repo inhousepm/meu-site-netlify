@@ -1,4 +1,3 @@
-// Usar ES Modules syntax
 import fetch from 'node-fetch';
 
 export const handler = async (event) => {
@@ -13,17 +12,27 @@ export const handler = async (event) => {
     });
     
     const data = await response.json();
+    
     return {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://www.pescamap.com',
+        'Access-Control-Allow-Credentials': true
+      },
       body: JSON.stringify(data)
     };
   } catch (error) {
     return { 
-      statusCode: 500, 
+      statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://www.pescamap.com',
+        'Access-Control-Allow-Credentials': true
+      },
       body: JSON.stringify({ error: 'Erro na requisição' }) 
     };
   }
 };
+
 
 
 
