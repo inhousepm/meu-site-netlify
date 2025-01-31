@@ -1,3 +1,4 @@
+// check-licenses.js
 import fetch from 'node-fetch';
 
 export const handler = async (event) => {
@@ -10,29 +11,28 @@ export const handler = async (event) => {
         'accept-version': '1.0.0'
       }
     });
-    
+
     const data = await response.json();
     
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': 'https://www.pescamap.com',
-        'Access-Control-Allow-Credentials': true
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     };
   } catch (error) {
-    return { 
+    return {
       statusCode: 500,
       headers: {
-        'Access-Control-Allow-Origin': 'https://www.pescamap.com',
-        'Access-Control-Allow-Credentials': true
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ error: 'Erro na requisição' }) 
+      body: JSON.stringify({ error: 'Internal Server Error' })
     };
   }
 };
-
 
 
 
